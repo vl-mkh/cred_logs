@@ -1,0 +1,15 @@
+{
+  "name": "credo_logs",
+  "version": "1.0.0",
+  "dependencies": {
+    "node-ssh": "*",
+    "requirejs": "^2.3.5"
+  },
+  "main": "ssh_connect.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
