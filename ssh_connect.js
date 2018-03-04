@@ -19,10 +19,14 @@ ssh.connect({
   });
 
 var array = fs.readFile('C:\\Users\\vladm\\Documents\\FrontProjects\\credo_logs\\logs\\credo_microservices.log', 'utf8', (err, data) => {
-    if (err) throw err;
+    if (err) {
+      throw err;
+    }
+    content = data;
+    processFile();
   });
 
-console.log(array);
-
-
-
+function processFile() {
+  data = content.split('\n').slice(-2)
+  console.log(data)
+  }
