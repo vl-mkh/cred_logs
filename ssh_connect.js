@@ -23,10 +23,10 @@ var array = fs.readFile('C:\\Users\\vladm\\Documents\\FrontProjects\\credo_logs\
       throw err;
     }
     content = data;
-    processFile();
+    parseFile();
   });
 
-function processFile() {
+function parseFile() {
   data = content.split('\n').slice(-2)
   console.log(data)
   }
