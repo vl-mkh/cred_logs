@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "dependencies": {
     "fs": "0.0.1-security",
+    "json-safe-parse": "0.0.2",
     "node-ssh": "*",
     "requirejs": "^2.3.5"
   },

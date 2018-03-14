@@ -1,12 +1,13 @@
-var fs, node_ssh, ssh;
+var fs, node_ssh, ssh, json_parse;
 var log_path_remote = './html/var/log/credo_microservices.log';
 var log_path_local = 'C:\\Users\\vladm\\Documents\\FrontProjects\\credo_logs\\logs\\credo_microservices.log'
 
 node_ssh = require('node-ssh');
 ssh = new node_ssh();
 fs = require('fs');
+jsonsafeparse = require('json-safe-parse');
 
-var re_log = /(\{"method".*\}),"request_params"/gi;
+var re_log = /(\{"method".*\})/gi;
 var re_time = /^\[([\W\d]+)\]/gi;
 
 ssh.connect({
@@ -34,9 +35,10 @@ function parse_logs(array) {
       if (array[i] == undefined || array[i].length == 0) {
           continue;
       }
-      log = array[i].match(re_log);
+      /*log = array[i].match(re_log);*/
+      log = jsonsafeparse(array[i].match(re_log), 'replace');
       time = array[i].match(re_time);
-      log_time = [time[0], log[0]];
+      log_time = [time[0], log];
       parsed_logs.push(log_time);     
   }
   return parsed_logs;
